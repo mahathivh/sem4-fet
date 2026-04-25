@@ -1,86 +1,101 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Portfolio</title>
+  <title>RESUME</title>
 
   <style>
     body {
-      background: lightblue;
-    }
-
-    h1 {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 20px;
       text-align: center;
-      color: red;
-      font-family: "Times New Roman";
-      font-size: 40px;
     }
 
     h2 {
-      color: tomato;
-      font-family: Arial;
-      text-align: center;
+      color: darkblue;
       font-size: 30px;
     }
 
-    p {
-      color: green;
-      font-family: Georgia;
-      font-size: 20px;
+    h3 {
+      color: #333;
+      font-size: 22px;
+      border-bottom: 2px solid gray;
+      display: inline-block;
     }
 
-    .box {
-      border: 3px solid black;
-      width: 60%;
-      margin: auto;
-      padding: 15px;
-      background-color: white;
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    a {
+      color: white;
+      background-color: pink;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    a:hover {
+      background-color: pink;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 8px 15px;
+      background-color: darkblue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: navy;
     }
   </style>
+
 </head>
 
 <body>
 
-  <h1>Mahathi</h1>
+  <h2 title="I'm a header">MAHATHI</h2>
 
-  <h2 id="role">Second year CSE student</h2>
+  <p title="I'm a tooltip">
+    I am a second year Computer Science and Engineering student at MITE.
+  </p>
 
-  <h2>
-    Computer Science student at MITE
-  </h2>
+  <h3>Education</h3>
 
-  <div class="box">
-    <p>I have learned programming languages like C, Java and Python.</p>
-    <p>I have basic knowledge of web development.</p>
-    <p>I am interested in improving my coding skills.</p>
-    <p>I enjoy problem solving and learning new technologies.</p>
-    <p>I am hardworking and dedicated towards my goals.</p>
-  </div>
+  <!-- ✅ Added id here -->
+  <p id="education">
+    I am currently pursuing a Bachelor of Engineering (B.E.) in Computer Science and Engineering at 
+    Mangalore Institute of Technology and Engineering (MITE).<br><br>
 
-  <br>
+    I have learned programming languages such as C, Java, and Python along with basic web development.<br><br>  
 
-  <!-- Same button structure -->
-  <button onclick="changeRole()">Change role</button>
+    I am interested in improving my coding and problem-solving skills.
+  </p>
 
-  <script>
-    function changeRole()
-    {
-      // same prompt format as given code
-      var role = prompt("Enter new role:", document.getElementById("role").innerHTML);
-
-      // update content
-      document.getElementById("role").innerHTML = role;
-
-      // added alert (as required)
-      alert("Role updated successfully!");
-    }
-  </script>
+  <!-- ✅ Button added -->
+  <button onclick="changeEducation()">Edit Education</button>
 
   <br><br>
 
-  <a href="https://mahathivh.github.io/sem4-fet/">
-    Go to Home page
-  </a>
+  <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
+
+  <!-- ✅ Script (same style as Nikhitha code) -->
+  <script>
+    function changeEducation()
+    {
+      var edu = prompt("Enter new education details:", document.getElementById("education").innerHTML);
+
+      document.getElementById("education").innerHTML = edu;
+
+      alert("Education details updated successfully!");
+    }
+  </script>
 
 </body>
 </html>
