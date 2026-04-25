@@ -1,1 +1,86 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Portfolio</title>
+
+  <style>
+    body {
+      background: lightblue;
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+      font-family: "Times New Roman";
+      font-size: 40px;
+    }
+
+    h2 {
+      color: tomato;
+      font-family: Arial;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    p {
+      color: green;
+      font-family: Georgia;
+      font-size: 20px;
+    }
+
+    .box {
+      border: 3px solid black;
+      width: 60%;
+      margin: auto;
+      padding: 15px;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Mahathi</h1>
+
+  <h2 id="role">Second year CSE student</h2>
+
+  <h2>
+    Computer Science student at MITE
+  </h2>
+
+  <div class="box">
+    <p>I have learned programming languages like C, Java and Python.</p>
+    <p>I have basic knowledge of web development.</p>
+    <p>I am interested in improving my coding skills.</p>
+    <p>I enjoy problem solving and learning new technologies.</p>
+    <p>I am hardworking and dedicated towards my goals.</p>
+  </div>
+
+  <br>
+
+  <!-- Same button structure -->
+  <button onclick="changeRole()">Change role</button>
+
+  <script>
+    function changeRole()
+    {
+      // same prompt format as given code
+      var role = prompt("Enter new role:", document.getElementById("role").innerHTML);
+
+      // update content
+      document.getElementById("role").innerHTML = role;
+
+      // added alert (as required)
+      alert("Role updated successfully!");
+    }
+  </script>
+
+  <br><br>
+
+  <a href="https://mahathivh.github.io/sem4-fet/">
+    Go to Home page
+  </a>
+
+</body>
+</html>
