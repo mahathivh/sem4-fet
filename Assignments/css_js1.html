@@ -5,44 +5,60 @@
 
   <style>
     body {
-      background-color: #f4f4f4;
+      background: #f0f8ff;
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 20px;
       text-align: center;
     }
 
     h2 {
       color: darkblue;
-      font-size: 30px;
+      font-size: 32px;
+      font-family: Georgia, serif;
     }
 
     h3 {
       color: #333;
-      font-size: 22px;
+      font-size: 24px;
+      font-family: Verdana, sans-serif;
       border-bottom: 2px solid gray;
       display: inline-block;
+      padding-bottom: 5px;
     }
 
     p {
       font-size: 16px;
-      color: #555;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ✅ Education text color added */
+    #education {
+      color: #1f4e79;
+    }
+
+    .container {
+      background-color: white;
+      width: 60%;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
     }
 
     a {
       color: white;
       background-color: pink;
-      padding: 5px 10px;
+      padding: 8px 15px;
       text-decoration: none;
       border-radius: 5px;
       display: inline-block;
-    }
-
-    a:hover {
-      background-color: pink;
+      margin-top: 10px;
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 8px 15px;
       background-color: darkblue;
       color: white;
@@ -60,40 +76,35 @@
 
 <body>
 
-  <h2 title="I'm a header">MAHATHI</h2>
+  <div class="container">
 
-  <p title="I'm a tooltip">
-    I am a second year Computer Science and Engineering student at MITE.
-  </p>
+    <h2>MAHATHI</h2>
 
-  <h3>Education</h3>
+    <p>
+      I am a second year Computer Science and Engineering student at MITE.
+    </p>
 
-  <!-- ✅ Added id here -->
-  <p id="education">
-    I am currently pursuing a Bachelor of Engineering (B.E.) in Computer Science and Engineering at 
-    Mangalore Institute of Technology and Engineering (MITE).<br><br>
+    <h3>Education</h3>
 
-    I have learned programming languages such as C, Java, and Python along with basic web development.<br><br>  
+    <p id="education">
+      I am currently pursuing a Bachelor of Engineering (B.E.) in Computer Science and Engineering at MITE.<br><br>
+      I have learned programming languages such as C, Java, and Python along with basic web development.<br><br>
+      I am interested in improving my coding and problem-solving skills.
+    </p>
 
-    I am interested in improving my coding and problem-solving skills.
-  </p>
+    <button onclick="changeEducation()">Edit Education</button>
 
-  <!-- ✅ Button added -->
-  <button onclick="changeEducation()">Edit Education</button>
+    <br><br>
 
-  <br><br>
+    <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
 
-  <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
+  </div>
 
-  <!-- ✅ Script (same style as Nikhitha code) -->
   <script>
-    function changeEducation()
-    {
+    function changeEducation() {
       var edu = prompt("Enter new education details:", document.getElementById("education").innerHTML);
-
       document.getElementById("education").innerHTML = edu;
-
-      alert("Education details updated successfully!");
+      alert("Education updated successfully!");
     }
   </script>
 
