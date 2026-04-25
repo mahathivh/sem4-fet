@@ -1,1 +1,132 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RESUME</title>
+
+  <style>
+    body {
+      background: #f0f8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: darkblue;
+      font-size: 32px;
+      font-family: Georgia, serif;
+    }
+
+    h3 {
+      color: #333;
+      font-size: 24px;
+      font-family: Verdana, sans-serif;
+      border-bottom: 2px solid gray;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    p {
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    #education {
+      color: #1f4e79;
+    }
+
+    .container {
+      background-color: white;
+      width: 60%;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+
+    a {
+      color: white;
+      background-color: pink;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: darkblue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: navy;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ✅ NAME -->
+    <h2 id="name">MAHATHI</h2>
+
+    <p>
+      I am a second year Computer Science and Engineering student at MITE.
+    </p>
+
+    <h3>Education</h3>
+
+    <p id="education">
+      I am currently pursuing a Bachelor of Engineering (B.E.) in Computer Science and Engineering at MITE.<br><br>
+      I have learned programming languages such as C, Java, and Python along with basic web development.<br><br>
+      I am interested in improving my coding and problem-solving skills.
+    </p>
+
+    <!-- ✅ BUTTON TO EDIT NAME -->
+    <button onclick="changeName()">Edit Name</button>
+
+    <br><br>
+
+    <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
+
+  </div>
+
+  <script>
+    function changeName() {
+
+      var current = document.getElementById("name").innerHTML;
+
+      var newName = prompt("Enter new name:", current);
+
+      // ✅ Validation 1: Cancel check
+      if (newName === null) {
+        alert("Update cancelled!");
+        return;
+      }
+
+      // ✅ Validation 2: Empty check
+      if (newName.trim() === "") {
+        alert("Name cannot be empty!");
+        return;
+      }
+
+      // update name
+      document.getElementById("name").innerHTML = newName;
+
+      alert("Name updated successfully!");
+    }
+  </script>
+
+</body>
+</html>
