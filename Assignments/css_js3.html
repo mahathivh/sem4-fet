@@ -33,6 +33,11 @@
             border: 1px solid #aaa;
         }
 
+        .inline {
+            width: auto;
+            margin-right: 5px;
+        }
+
         input[type="submit"] {
             background-color: #4CAF50;
             color: white;
@@ -48,7 +53,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            display: none; 
+            display: none;
         }
 
         a {
@@ -67,12 +72,27 @@
 
     <form id="contactForm">
 
+    
         <label>Full Name:</label>
         <input type="text" id="name" required>
 
+        
         <label>Email:</label>
         <input type="email" id="email" required>
 
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male" class="inline"> Male
+        <input type="radio" name="gender" value="Female" class="inline"> Female
+        <br><br>
+
+        <label>Skills:</label><br>
+        <input type="checkbox" value="HTML" class="inline"> HTML
+        <input type="checkbox" value="CSS" class="inline"> CSS
+        <input type="checkbox" value="JavaScript" class="inline"> JavaScript
+        <br><br>
+
+        
         <label>Subject:</label>
         <select id="subject">
             <option value="">-- Select --</option>
@@ -80,6 +100,7 @@
             <option>Internship</option>
             <option>Project</option>
         </select>
+
 
         <label>Message:</label>
         <textarea id="message" rows="4"></textarea>
@@ -100,6 +121,20 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
+
+    
+    let gender = "";
+    let genders = document.getElementsByName("gender");
+    for (let g of genders) {
+        if (g.checked) {
+            gender = g.value;
+        }
+    }
+
+    let skills = [];
+    let checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+    checkboxes.forEach(cb => skills.push(cb.value));
+
     let subject = document.getElementById("subject").value;
     let message = document.getElementById("message").value;
 
@@ -109,10 +144,12 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         "<h3>Entered Details:</h3>" +
         "<p><b>Name:</b> " + name + "</p>" +
         "<p><b>Email:</b> " + email + "</p>" +
+        "<p><b>Gender:</b> " + gender + "</p>" +
+        "<p><b>Skills:</b> " + skills.join(", ") + "</p>" +
         "<p><b>Subject:</b> " + subject + "</p>" +
         "<p><b>Message:</b> " + message + "</p>";
 
-    outputDiv.style.display = "block"; 
+    outputDiv.style.display = "block";
 });
 </script>
 
