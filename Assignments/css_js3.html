@@ -48,6 +48,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
+            display: none; 
         }
 
         a {
@@ -92,8 +93,8 @@
     <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
 
 </div>
-    <div>
-        <script>
+
+<script>
 document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -102,17 +103,18 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     let subject = document.getElementById("subject").value;
     let message = document.getElementById("message").value;
 
-    document.getElementById("output").innerHTML =
+    let outputDiv = document.getElementById("output");
+
+    outputDiv.innerHTML =
         "<h3>Entered Details:</h3>" +
         "<p><b>Name:</b> " + name + "</p>" +
         "<p><b>Email:</b> " + email + "</p>" +
         "<p><b>Subject:</b> " + subject + "</p>" +
         "<p><b>Message:</b> " + message + "</p>";
+
+    outputDiv.style.display = "block"; 
 });
 </script>
-        
-    </div>
-
 
 </body>
 </html>
