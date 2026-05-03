@@ -1,112 +1,94 @@
-<!DOCTYPE html>
+
 <html>
 <head>
-    <title>Hire Me Contact Form</title>
-
+    <title>Validated Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .container {
-            width: 320px;
-            margin: 40px auto;
+        .form-container {
+            background: white;
             padding: 20px;
-            border: 1px solid #ccc;
             border-radius: 8px;
-        }
-
-        h1 {
+            width: 320px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        label {
-            font-weight: bold;
+        h2 {
+            margin-bottom: 10px;
         }
 
-        input, select, textarea {
+        input, textarea {
             width: 100%;
-            margin-top: 5px;
-            margin-bottom: 12px;
-            padding: 6px;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            border: 1px solid #aaa;
         }
 
-        .inline {
-            width: auto;
-            margin-right: 5px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0284c7;
             color: white;
             border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        button:hover {
+            background: #0369a1;
         }
 
         .output {
             margin-top: 15px;
+            background: #e0f2fe;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            display: none;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: left;
         }
 
         a {
             display: block;
-            text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
-
 </head>
 <body>
 
-<div class="container">
+<div class="form-container">
+    <h2>Contact Form</h2>
 
-    <h1>Hire Me</h1>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Enter Name">
+        <div class="error" id="nameError"></div>
 
-    <form id="contactForm">
+        <input type="text" id="email" placeholder="Enter Email">
+        <div class="error" id="emailError"></div>
 
-    
-        <label>Full Name:</label>
-        <input type="text" id="name" required>
+        <textarea id="message" placeholder="Enter Message"></textarea>
+        <div class="error" id="msgError"></div>
 
-        
-        <label>Email:</label>
-        <input type="email" id="email" required>
-
-
-        <label>Gender:</label><br>
-        <input type="radio" name="gender" value="Male" class="inline"> Male
-        <input type="radio" name="gender" value="Female" class="inline"> Female
-        <br><br>
-
-        <label>Skills:</label><br>
-        <input type="checkbox" value="HTML" class="inline"> HTML
-        <input type="checkbox" value="CSS" class="inline"> CSS
-        <input type="checkbox" value="JavaScript" class="inline"> JavaScript
-        <br><br>
-
-        
-        <label>Subject:</label>
-        <select id="subject">
-            <option value="">-- Select --</option>
-            <option>Job</option>
-            <option>Internship</option>
-            <option>Project</option>
-        </select>
-
-
-        <label>Message:</label>
-        <textarea id="message" rows="4"></textarea>
-
-        <input type="submit" value="Submit">
-
+        <button type="submit">Submit</button>
     </form>
 
     <div class="output" id="output"></div>
@@ -116,40 +98,57 @@
 </div>
 
 <script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
+document.getElementById("myForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let msgError = document.getElementById("msgError");
+    
+    nameError.textContent = "";
+    emailError.textContent = "";
+    msgError.textContent = "";
+
+    let isValid = true;
 
     
-    let gender = "";
-    let genders = document.getElementsByName("gender");
-    for (let g of genders) {
-        if (g.checked) {
-            gender = g.value;
-        }
+    let namePattern = /^[A-Za-z ]+$/;
+    if (name === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+    } else if (!namePattern.test(name)) {
+        nameError.textContent = "Only letters allowed";
+        isValid = false;
     }
 
-    let skills = [];
-    let checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
-    checkboxes.forEach(cb => skills.push(cb.value));
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (email === "") {
+        emailError.textContent = "Email is required";
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        emailError.textContent = "Invalid email format";
+        isValid = false;
+    }
 
-    let subject = document.getElementById("subject").value;
-    let message = document.getElementById("message").value;
+    
+    if (message.length < 5) {
+        msgError.textContent = "Message must be at least 5 characters";
+        isValid = false;
+    }
 
-    let outputDiv = document.getElementById("output");
-
-    outputDiv.innerHTML =
-        "<h3>Entered Details:</h3>" +
-        "<p><b>Name:</b> " + name + "</p>" +
-        "<p><b>Email:</b> " + email + "</p>" +
-        "<p><b>Gender:</b> " + gender + "</p>" +
-        "<p><b>Skills:</b> " + skills.join(", ") + "</p>" +
-        "<p><b>Subject:</b> " + subject + "</p>" +
-        "<p><b>Message:</b> " + message + "</p>";
-
-    outputDiv.style.display = "block";
+    
+    if (isValid) {
+        let result = `
+            <strong>Name:</strong> ${name} <br>
+            <strong>Email:</strong> ${email} <br>
+            <strong>Message:</strong> ${message}
+        `;
+        document.getElementById("output").innerHTML = result;
+    }
 });
 </script>
 
