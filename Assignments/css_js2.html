@@ -78,7 +78,7 @@
 
   <div class="container">
 
-    <!-- ✅ NAME -->
+
     <h2 id="name">MAHATHI</h2>
 
     <p>
@@ -93,7 +93,7 @@
       I am interested in improving my coding and problem-solving skills.
     </p>
 
-    <!-- ✅ BUTTON TO EDIT NAME -->
+    
     <button onclick="changeName()">Edit Name</button>
 
     <br><br>
@@ -109,13 +109,13 @@
 
       var newName = prompt("Enter new name:", current);
 
-      // ✅ Validation 1: Cancel check
+    
       if (newName === null) {
         alert("Update cancelled!");
         return;
       }
 
-      // ✅ Validation 2: Empty check
+    
       if (newName.trim() === "") {
         alert("Name cannot be empty!");
         return;
