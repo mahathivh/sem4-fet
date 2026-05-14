@@ -1,1 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Index Layer Design</title>
 
+<style>
+
+    body{
+        margin:0;
+        padding:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(to right, #141e30, #243b55);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        min-height:100vh;
+        overflow:hidden;
+    }
+
+    .main{
+        position:relative;
+        width:700px;
+        height:500px;
+        margin-bottom:40px;
+    }
+
+    /* Layer 1 */
+    .layer1{
+        position:absolute;
+        width:220px;
+        height:350px;
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+        border-radius:25px;
+        top:40px;
+        left:40px;
+        z-index:1;
+        box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        color:white;
+        font-size:40px;
+        font-weight:bold;
+
+        transition:0.4s;
+    }
+
+    /* Layer 2 */
+    .layer2{
+        position:absolute;
+        width:400px;
+        height:220px;
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        border-radius:25px;
+        top:90px;
+        left:140px;
+        z-index:2;
+        box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        color:white;
+        font-size:40px;
+        font-weight:bold;
+
+        transition:0.4s;
+    }
+
+    /* Layer 3 */
+    .layer3{
+        position:absolute;
+        width:300px;
+        height:350px;
+        background: linear-gradient(135deg, #56ab2f, #a8e063);
+        border-radius:25px;
+        top:120px;
+        left:250px;
+        z-index:3;
+        box-shadow:0 10px 25px rgba(0,0,0,0.4);
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        color:white;
+        font-size:40px;
+        font-weight:bold;
+
+        transition:0.4s;
+    }
+
+    /* Hover Effect */
+    .layer1:hover,
+    .layer2:hover,
+    .layer3:hover{
+        transform:scale(1.03);
+    }
+
+    /* Buttons Section */
+    .buttons{
+        display:flex;
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;
+    }
+
+    button{
+        padding:15px 30px;
+        border:none;
+        border-radius:30px;
+        font-size:16px;
+        font-weight:bold;
+        cursor:pointer;
+        color:white;
+        transition:0.3s;
+    }
+
+    #Red{
+        background:#ee0979;
+    }
+
+    #Green{
+        background:#0072ff;
+    }
+
+    #Yellow{
+        background:#56ab2f;
+    }
+
+    button:hover{
+        transform:translateY(-3px);
+        opacity:0.9;
+    }
+
+    /* Homepage Link */
+    #homepage{
+        padding:15px 25px;
+        background:white;
+        color:#333;
+        text-decoration:none;
+        border-radius:30px;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    #homepage:hover{
+        background:#f1f1f1;
+        transform:translateY(-3px);
+    }
+
+</style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="layer1">A</div>
+
+        <div class="layer2">B</div>
+
+        <div class="layer3">C</div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button id="Red">Orange Layer</button>
+
+        <button id="Green">Blue Layer</button>
+
+        <button id="Yellow">Green Layer</button>
+
+        <!-- Mahathi Homepage Link -->
+        <a id="homepage" href="https://mahathivh.github.io/sem4-fet/">
+            Go to Home Page
+        </a>
+
+    </div>
+
+<script>
+
+    let layer1 = document.querySelector(".layer1");
+    let layer2 = document.querySelector(".layer2");
+    let layer3 = document.querySelector(".layer3");
+
+    let red = document.getElementById("Red");
+    let green = document.getElementById("Green");
+    let yellow = document.getElementById("Yellow");
+
+    function bringFront(layer){
+
+        layer1.style.zIndex = 1;
+        layer2.style.zIndex = 2;
+        layer3.style.zIndex = 3;
+
+        layer.style.zIndex = 10;
+    }
+
+    red.addEventListener("click", function(){
+        bringFront(layer1);
+    });
+
+    green.addEventListener("click", function(){
+        bringFront(layer2);
+    });
+
+    yellow.addEventListener("click", function(){
+        bringFront(layer3);
+    });
+
+</script>
+
+</body>
+</html>
