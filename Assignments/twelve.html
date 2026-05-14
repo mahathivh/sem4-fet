@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
 
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+        }
+
+        .container{
+            width: 340px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        h1{
+            color: rgb(36, 59, 85);
+        }
+
+            #h3{
+            color: rgb(85, 85, 85);
+            text-align: center;
+        }
+
+        button{
+
+            padding: 12px 24px;
+            border: none;
+            border-radius: 15px;
+            background: rgb(36, 59, 85);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+ #homepage
+{    position: absolute;
+    bottom: 200px;
+    padding: 10px 20px; 
+    background: #a9abd8;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>System Login</h1>
+        <h3 id="h3">Enter the secret Key!!</h3>
+        <button>Enter Password</button>
+        <a id="homepage" href="https://sachinacharya28.github.io/SEM-4-FET/assignments/one.html">Home Page</a>
+    </div>
+</body>
+<script>
+    let btn=document.querySelector("button");
+    let h3=document.querySelector("#h3");
+    btn.addEventListener("click",()=>{
+
+        let start;
+        do{
+
+            start = prompt("Type YES to start login");
+
+        }while(start.toLowerCase() !== "yes");
+
+        alert("you have 3 attempts to enter the correct password");
+
+        let x=3;
+       while(x>0){
+        let password=prompt("Enter the password");
+        
+        if(password=="@123"){
+            alert("Login successful!!");
+            h3.textContent="Login Successful!!";
+            h3.style.color="green";
+            btn.style.display="none";
+            break;
+        }
+        else{
+            x--;
+            if(x>0){
+                alert(`Wrong password!! You have ${x} attempts left`);
+                password=prompt("Enter the password");
+            }
+            else{
+                alert("Login failed!! No attempts left");
+                h3.textContent="Login Failed!!";
+                h3.style.color="red";
+                btn.style.display="none";
+                break;
+            }
+        }
+       }
+    })
+</script>
+</html>
