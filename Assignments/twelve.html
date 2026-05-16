@@ -1,157 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Contact Form</title>
 
-<style>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 360px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
 
-    body{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-    }
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
 
-    .container{
-        width: 360px;
-        padding: 35px;
-        background: #ffffff;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            transition: 0.3s;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
 
-    h1{
-        color: #4c1d95;
-        font-family: 'Trebuchet MS', sans-serif;
-        letter-spacing: 1px;
-    }
+        input:focus, textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 5px rgba(59,130,246,0.5);
+        }
 
-    #h3{
-        color: #374151;
-        text-align: center;
-        font-weight: 500;
-        font-family: 'Verdana', sans-serif;
-    }
+        textarea {
+            resize: none;
+            height: 80px;
+        }
 
-    button{
-        padding: 12px 26px;
-        border: none;
-        border-radius: 18px;
-        background: linear-gradient(135deg, #ff6a00, #ee0979);
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-        font-family: 'Segoe UI';
-    }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    button:hover{
-        transform: scale(1.05);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    }
+        button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-   
-    #h3{
-        background: #f3e8ff;
-        padding: 15px;
-        border-radius: 15px;
-        width: 100%;
-        border-left: 6px solid #7c3aed;
-    }
+        .error {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 3px;
+        }
 
-    a{
-        text-decoration: none;
-        background: #4c1d95;
-        color: white;
-        padding: 10px 18px;
-        border-radius: 20px;
-        transition: 0.3s;
-        font-weight: bold;
-    }
+        .output {
+            margin-top: 15px;
+            background: #f0f9ff;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            font-size: 14px;
+        }
 
-    a:hover{
-        background: #6d28d9;
-        transform: translateY(-2px);
-    }
+        .hidden {
+            display: none;
+        }
 
-</style>
-</head>
+        .attempts {
+            margin-top: 10px;
+            color: #555;
+            font-size: 14px;
+            text-align: center;
+        }
 
-<body>
-
-<div class="container">
-
-    <h1>System Login</h1>
-
-    <h3 id="h3">Enter the secret Key!!</h3>
-
-    <button>Enter Password</button>
-
-    <a href="https://mahathivh.github.io/sem4-fet/">Go to Home Page</a>
-
-</div>
-
-<script>
-
-    let btn=document.querySelector("button");
-    let h3=document.querySelector("#h3");
-
-    btn.addEventListener("click",()=>{
-
-        let start;
-
-        do{
-            start = prompt("Type YES to start login");
-        }while(start.toLowerCase() !== "yes");
-
-        alert("you have 3 attempts to enter the correct password");
-
-        let x=3;
-
-        while(x>0){
-
-            let password=prompt("Enter the password");
-        
-            if(password=="@HELLO"){
-                alert("Login successful!!");
-                h3.textContent="Login Successful!!";
-                h3.style.color="green";
-                btn.style.display="none";
-                break;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
             }
-            else{
-                x--;
-
-                if(x>0){
-                    alert(`Wrong password!! You have ${x} attempts left`);
-                }
-                else{
-                    alert("Login failed!! No attempts left");
-                    h3.textContent="Login Failed!!";
-                    h3.style.color="red";
-                    btn.style.display="none";
-                    break;
-                }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    })
+    </style>
+</head>
+<body>
 
-</script>
+    <!-- PIN SECTION -->
+    <div class="container" id="pinSection">
+        <h2>Enter Security PIN</h2>
 
+        <input type="password" id="pinInput" placeholder="Enter PIN">
+
+        <div class="error" id="pinError"></div>
+
+        <button id="pinBtn">Unlock</button>
+
+        <div class="attempts" id="attemptsText">
+            Attempts Left: 3
+        </div>
+    </div>
+
+    <!-- FORM SECTION -->
+    <div class="container hidden" id="formSection">
+        <h2>Contact Form</h2>
+
+        <form id="myForm">
+
+            <input type="text" id="name" placeholder="Enter Name">
+            <div class="error" id="nameError"></div>
+
+            <input type="text" id="email" placeholder="Enter Email">
+            <div class="error" id="emailError"></div>
+
+            <textarea id="message" placeholder="Enter Message"></textarea>
+            <div class="error" id="msgError"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="output" id="output"></div>
+    </div>
+
+    <script src="five_script.js"></script>
+   
 </body>
 </html>
