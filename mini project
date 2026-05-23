@@ -47,6 +47,7 @@
             alert("Welcome to my profile page!");
         }
     </script>
+ <a href="https://mahathivh.github.io/sem4-fet/">go to home page</a> 
 
 </body>
 </html>
