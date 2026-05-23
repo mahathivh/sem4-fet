@@ -6,6 +6,7 @@
     <title>Creative Profile Page</title>
 
     <style>
+
         *{
             margin:0;
             padding:0;
@@ -19,7 +20,6 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            color:white;
         }
 
         .container{
@@ -32,6 +32,8 @@
             box-shadow:0 10px 30px rgba(0,0,0,0.4);
         }
 
+        /* LEFT SIDE */
+
         .left{
             width:40%;
             background:linear-gradient(135deg,#ff6a00,#ee0979);
@@ -39,25 +41,21 @@
             flex-direction:column;
             justify-content:center;
             align-items:center;
+            text-align:center;
+            color:white;
             padding:20px;
         }
 
-        .left img{
-            width:140px;
-            height:140px;
-            border-radius:50%;
-            border:5px solid white;
-            margin-bottom:20px;
-        }
-
         .left h2{
-            font-size:28px;
+            font-size:30px;
             margin-bottom:10px;
         }
 
         .left p{
             font-size:18px;
         }
+
+        /* RIGHT SIDE */
 
         .right{
             width:60%;
@@ -106,12 +104,12 @@
             color:white;
             font-size:16px;
             cursor:pointer;
-            transition:0.3s;
         }
 
         button:hover{
-            transform:scale(1.05);
+            opacity:0.9;
         }
+
     </style>
 </head>
 
@@ -120,9 +118,8 @@
     <div class="container">
 
         <!-- LEFT SIDE -->
-        <div class="left">
 
-            <img src="https://via.placeholder.com/140" alt="Profile">
+        <div class="left">
 
             <h2>MAHATHI V H</h2>
 
@@ -131,12 +128,13 @@
         </div>
 
         <!-- RIGHT SIDE -->
+
         <div class="right">
 
             <h1>About Me</h1>
 
             <div class="info">
-                Hello! I am Mahathi.  
+                Hello! I am Mahathi.
                 I love learning HTML, CSS, and JavaScript.
                 My dream is to become a creative web designer
                 and build modern websites.
@@ -178,9 +176,11 @@
     </div>
 
     <script>
+
         function showMessage(){
             alert("🌸 Welcome to Mahathi's Creative Portfolio!");
         }
+
     </script>
 
 </body>
